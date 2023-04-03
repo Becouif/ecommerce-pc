@@ -20,7 +20,7 @@
                     <div class="form-group">
                       <label for="exampleInputEmail1">Name</label>
                       <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="Enter category name">
+                        placeholder="Enter subcategory name">
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

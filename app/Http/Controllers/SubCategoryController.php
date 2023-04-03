@@ -11,7 +11,8 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $subcategories = Subcategory::get();
+        return view('admin.subcategory.index',compact('subcategories'));
     }
 
     /**
@@ -35,8 +36,8 @@ class SubCategoryController extends Controller
             'name'=>$request->name,
             'category_id'=>$request->category
         ]);
-        notify()->success('category sucessfully updated');
-        return redirect()->back();
+        notify()->success('subcategory successfully created');
+        return redirect()->route('subcategory.index');
     }
 
     /**
@@ -52,7 +53,8 @@ class SubCategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $subcategory = Subcategory::find($id);
+        return view('admin.subcategory.edit',compact('subcategory'));
     }
 
     /**
@@ -60,7 +62,17 @@ class SubCategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request,[
+            'name'=>'required',
+            'category'=>'required'
+        ]);
+        $subcategory = Subcategory::find($id);
+        $subcategory->name = $request->name;
+        $subcategory->category_id = $request->category;
+        $subcategory->save();
+        notify()->success('subcategory successfully updated');
+        return redirect()->route('subcategory.index');
+
     }
 
     /**
@@ -69,5 +81,9 @@ class SubCategoryController extends Controller
     public function destroy(string $id)
     {
         //
+        $subcategory = Subcategory::find($id);
+        $subcategory->delete();
+        notify()->success('subcategory successfully deleted');
+        return redirect()->route('subcategory.index');
     }
 }

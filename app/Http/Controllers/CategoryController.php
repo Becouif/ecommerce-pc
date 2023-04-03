@@ -85,7 +85,7 @@ class CategoryController extends Controller
         $category->description = $request->description;
         $category->image = $image;
         $category->save();
-        notify()->success('category sucessfully updated');
+        notify()->success('category successfully updated');
         return redirect()->route('category.index');
     }
 

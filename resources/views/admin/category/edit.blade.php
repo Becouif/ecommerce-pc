@@ -5,16 +5,16 @@
     <!-- start of breadcrumbs  -->
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Category</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Create</li>
+        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{route('category.index')}}">Category</a></li>
+        <li class="breadcrumb-item active" aria-current="page">edit</li>
       </ol>
     </nav>
     <!-- end of breadcrumbs -->
 
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Create Category</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Update Category</h6>
                 </div>
                 <div class="card-body">
                   <form action="{{route('category.update',[$category->id])}}" enctype="multipart/form-data" method="post">@csrf

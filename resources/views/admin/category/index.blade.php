@@ -1,8 +1,4 @@
-                  @if (Session::has('message'))
-                    <div class="alert alert-success">
-                      {{ Session::get('message') }}
-                    </div>
-                  @endif
+                 
 @extends('admin.layouts.main')
                
                  
@@ -10,11 +6,24 @@
 @section('content')
 
 
-               
+        
+    <!-- start of breadcrumbs  -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Category</li>
+      </ol>
+    </nav>
+    <!-- end of breadcrumbs -->  
 
           <div class="row">
           
             <div class="col-lg-12 mb-4">
+            @if (Session::has('message'))
+                    <div class="alert alert-success">
+                      {{ Session::get('message') }}
+                    </div>
+                  @endif
               <!-- Simple Tables -->
               <div class="card">
                 
@@ -51,7 +60,7 @@
                       </tr>
                       @endforeach
                       @else
-                      <td>No Category created yet</td>
+                      <td>No category created yet</td>
                       @endif
                     </tbody>
                   </table>
