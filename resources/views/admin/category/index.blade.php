@@ -1,8 +1,6 @@
                  
 @extends('admin.layouts.main')
-               
-                 
-                
+
 @section('content')
 
 
@@ -23,7 +21,7 @@
                     <div class="alert alert-success">
                       {{ Session::get('message') }}
                     </div>
-                  @endif
+            @endif
               <!-- Simple Tables -->
               <div class="card">
                 
@@ -54,7 +52,7 @@
                         <td>
                           <form action="{{route('category.destroy',[$category->id])}}" method="POST" onsubmit="return confirmDelete()">@csrf
                             {{ method_field('DELETE') }}
-                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-sm bg-danger btn-danger">Delete</button>
                           </form>
                         </td>
                       </tr>

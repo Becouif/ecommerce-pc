@@ -10,42 +10,38 @@
                   <table class="table align-items-center table-flush table-hover" id="dataTableHover">
                     <thead class="thead-light">
                       <tr>
+                        <th>No</th>
                         <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                        <th>Price</th>
+                        <th>Additional Info</th>
+                        <th>Category</th>
+                        <th>-</th>
+                        <th>-</th>
                       </tr>
                     </thead>
-                    <tfoot>
-                      <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                      </tr>
-                    </tfoot>
                     <tbody>
+                      @if ($products)
+                      @foreach ($products as $key=>$product)
                       <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
+                        <td>{{$key+1}}</td>
+                        <td>{{$product->name}}</td>
+                        <td>{!!$product->description!!}</td>
+                        <td><img src="{{Storage::url($product->image)}}" width="100" alt=""></td>
+                        <td>${{$product->price}}</td>
+                        <td>{{$product->additional_info}}</td>
+                        <td>{{$product->category->name}}</td>
+                        <td><a href="{{route('product.edit',[$product->id])}}"><button class="btn btn-sm btn-primary">Edit</button></a></td>
+                        <td><form action="{{ route('product.destroy',[$product->id]) }}" method="post" onsubmit="return confirmDelete()">@csrf 
+                        {{ method_field('DELETE') }}
+                        <button type="submit" class="btn btn-sm bg-danger btn-danger">Delete</button></form></td>
                       </tr>
-                      <tr>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>63</td>
-                        <td>2011/07/25</td>
-                        <td>$170,750</td>
-                      </tr>
-
+                      @endforeach
+                      @else
+                      <p>No product to display</p>
+                      @endif
+                      
                     </tbody>
                   </table>
                 </div>

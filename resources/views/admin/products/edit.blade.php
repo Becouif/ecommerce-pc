@@ -7,20 +7,21 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
         <li class="breadcrumb-item"><a href="{{route('category.index')}}">Product</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Create</li>
+        <li class="breadcrumb-item active" aria-current="page">Edit</li>
       </ol>
     </nav>
     <!-- end of breadcrumbs -->
 
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Create Product</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Update Product</h6>
                 </div>
                 <div class="card-body">
-                  <form action="{{route('product.store')}}" enctype="multipart/form-data" method="post">@csrf
+                  <form action="{{route('product.update',[$product->id])}}" enctype="multipart/form-data" method="post">@csrf
+                    {{ method_field('PUT') }}
                     <div class="form-group">
                       <label for="exampleInputEmail1">Name</label>
-                      <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp"
+                      <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{$product->name}}" id="exampleInputEmail1" aria-describedby="emailHelp"
                         placeholder="Enter product name">
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -31,7 +32,7 @@
                     </div>
                     <div class="form-group">
                       <label for="description">Description</label>
-                      <textarea name="description" class="form-control @error('description') is-invalid @enderror" name="description" id="summernote" cols="30" rows="10"></textarea>
+                      <textarea name="description" class="form-control @error('description') is-invalid @enderror" name="description" id="summernote" cols="30" rows="10">{!! $product->description !!}</textarea>
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -40,7 +41,7 @@
                     </div>
                     <div class="form-group">
                       <label for="additional_info">Additional Info</label>
-                      <textarea name="additional_info" class="form-control @error('additional_info') is-invalid @enderror" name="description" id="" cols="30" rows="10"></textarea>
+                      <textarea name="additional_info" class="form-control @error('additional_info') is-invalid @enderror" name="description" id="" cols="30" rows="10">{{$product->additional_info}}</textarea>
                                 @error('additional_info')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -49,6 +50,7 @@
                     </div>
                     <div class="form-group">
                       <div class="custom-file">
+                        <img src="{{Storage::url($product->image)}}" width="100" alt="">
                         <label class="custom-file-label" for="customFile">Choose file</label>
                         <input name="image" type="file" class="custom-file-input @error('image') is-invalid @enderror" id="customFile">
                         
@@ -61,7 +63,7 @@
                     </div>
                     <div class="form-group">
                       <label for="price">enter price</label>
-                      <input name="price" type="number" class="form-control @error('price') is-invalid @enderror" id="price" placeholder="Enter price">
+                      <input name="price" type="number" class="form-control @error('price') is-invalid @enderror" value="{{$product->price}}" id="price" placeholder="Enter price">
                         @error('price')
                           <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -97,7 +99,7 @@
 
                     
                     <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                     
                   </form>

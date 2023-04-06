@@ -14,7 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.products.index');
+        $products = Product::get();
+        return view('admin.products.index',compact('products'));
     }
 
     /**
@@ -65,7 +66,8 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product = Product::find($id);
+        return view('admin.products.edit',compact('product'));
     }
 
     /**
@@ -73,7 +75,31 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = Product::find($id);
+        $image = $product->image;
+        if($request->file('image')){
+            $image = $request->file('image')->store('public/product');
+            \Storage::delete($product->image);
+
+            $product->name = $request->name;
+            $product->description = $request->description;
+            $product->image = $image;
+            $product->additional_info = $request->additional_info;
+            $product->price = $request->price;
+            $product->category_id = $request->category;
+            $product->subcategory_id = $request->subcategory;
+            $product->save();
+        } else {
+            $product->name = $request->name;
+            $product->description = $request->description;
+            $product->additional_info = $request->additional_info;
+            $product->price = $request->price;
+            $product->category_id = $request->category;
+            $product->subcategory_id = $request->subcategory;
+            $product->save();
+        }
+        notify()->success('product successfully updated');
+        return redirect()->route('product.index');
     }
 
     /**
@@ -81,6 +107,11 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::find($id);
+        $image = $product->image;
+        $product->delete();
+        \Storage::delete($image);
+        notify()->success('product successfully deleted');
+        return redirect()->route('product.index');
     }
 }

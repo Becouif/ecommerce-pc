@@ -37,6 +37,18 @@
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
+
+  <!-- Page level plugins -->
+  <script src="{{asset('admin/vendor/datatables/jquery.dataTables.min.js')}}"></script>
+  <script src="{{asset('admin/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+
+  <!-- Page level custom scripts -->
+  <script>
+    $(document).ready(function () {
+      $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+    });
+  </script>
+
   <script type="text/javascript">
     function confirmDelete(){
       return confirm('are you sure you want to delete?');
