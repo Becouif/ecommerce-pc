@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             'email_verified_at'=>NOW(),
             'password'=>bcrypt(12345),
             'phone_number'=>'0731185943',
-            'address'=>'Babyaka 26 ',
+            'address'=>'Babyaka 26',
             'is_admin'=>1,
         ]);
 
