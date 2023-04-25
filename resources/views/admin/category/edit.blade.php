@@ -42,8 +42,8 @@
                     <div class="form-group">
                       <img src="{{Storage::url($category->image)}}" width="100" alt="">
                       <div class="custom-file">
-                        <input name="image" type="file" class="custom-file-input @error('image') is-invalid @enderror" id="customFile">
-                        <label class="custom-file-label" for="customFile">Choose file</label>
+                        <input name="image" type="file" class=" @error('image') is-invalid @enderror" id="customFile">
+                        <!-- <label class="custom-file-label" for="customFile">Choose file</label> -->
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

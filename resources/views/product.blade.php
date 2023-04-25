@@ -9,14 +9,15 @@
     <h1 class="jumbotron-heading">Album example</h1>
     <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
     <p>
-      <a href="#" class="btn btn-primary my-2">Main call to action</a>
+      <a href="#" class="btn btn-primary my-2 mr-2">Main call to action</a>
       <a href="#" class="btn btn-secondary my-2">Secondary action</a>
     </p>
   </div>
 </section>
 <h2>Category</h2>
 @foreach (App\Models\Category::get() as $cat)
-  <button class="btn btn-secondary mb-4 me-2">{{$cat->name}}</button>
+  <a href="{{route('product.list',[$cat->slug])}}"><button class="btn btn-secondary mb-4 me-2">{{$cat->name}}</button></a>
+  
 @endforeach
 
 <div class="album py-5 bg-light">
@@ -33,11 +34,10 @@
             <p class="card-text">{!!Str::limit($product->description,120)!!}</p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <a href="product/{{$product->id}}"><button type="button" class="btn btn-sm btn-outline-success">View</button></a>
-                
-                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                <a href="product/{{$product->id}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
+                <button type="button" class="btn btn-sm btn-outline-success">Add to cart</button>
               </div>
-              <small class="text-muted">$ {{$product->price}}</small>
+              <small class="text-muted">${{$product->price}}</small>
             </div>
           </div>
         </div>
@@ -46,9 +46,11 @@
     </div>
   </div>
 </div>
+<!-- ADD A FUNCTIONAL CAROUSEL  -->
 
+<!-- <br><br><br> -->
 <!-- start of carousel  -->
-<div class="jumbotron">
+<!-- <div class="jumbotron">
   <div id="carousel1" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -61,23 +63,18 @@
             <p><b>{{$product->name}}</b></p>
             <p class="card-text">{!!Str::limit($product->description,120)!!}</p>
             <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <a href="product/{{$product->id}}"><button type="button" class="btn btn-sm btn-outline-success">View</button></a>
-                
-                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-              </div>
               <small class="text-muted">$ {{$product->price}}</small>
             </div>
           </div>
-        </div>
+        </div> 
               
             @endforeach
             
-          </div>
+           </div>
         </div>
-      </div>
+      </div>  -->
       <!-- carousel two  -->
-      <div class="carousel-item">
+      <!-- <div class="carousel-item">
         <div class="row">
           <div class="col-4">
             <img src="{{asset('image/barimg.jpg')}}" height="100" width="100" class="d-block w-100" alt="...">
@@ -96,8 +93,8 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-</div>
-<!-- end of carousel  -->
+</div>  -->
+ <!-- end of carousel  -->
 </main>
 
 <br>

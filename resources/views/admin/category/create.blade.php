@@ -39,9 +39,10 @@
                                 @enderror
                     </div>
                     <div class="form-group">
-                      <div class="custom-file">
-                        <input name="image" type="file" class="custom-file-input @error('image') is-invalid @enderror" id="customFile">
-                        <label class="custom-file-label" for="customFile">Choose file</label>
+                      <div class="">
+                        
+                        <!-- <label for="customFile">Choose file</label> -->
+                        <input name="image" type="file" class=" @error('image') is-invalid @enderror" id="customFile">
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

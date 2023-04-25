@@ -36,4 +36,11 @@ app.component('example-component', ExampleComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
+// fontawesome 
+import "/node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
+import "/node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
+import "/node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
+import "/node_modules/@fortawesome/fontawesome-free/scss/regular.scss";
+
+
 app.mount('#app');

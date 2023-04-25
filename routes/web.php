@@ -23,14 +23,19 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/',[FrontProductListController::class, 'index']);
 
-Route::get('product/{id}',[FrontProductListController::class, 'show']);
+Route::get('product/{id}',[FrontProductListController::class, 'show'])->name('product.show.frontend');
+Route::get('category/{name}',[FrontProductListController::class, 'all'])->name('product.list');
 
 // route for ajax dropdown for subcategories after clicking category 
 Route::get('subcategories/{id}',[ProductController::class, 'loadSubcategory'])->name('load.subcategory');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/home',function(){
+    return redirect('auth/dashboard');
+});
 
 Route::group(['prefix'=>'auth'], function(){
     Route::get('/dashboard',function(){

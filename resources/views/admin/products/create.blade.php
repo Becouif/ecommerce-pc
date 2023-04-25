@@ -48,9 +48,9 @@
                                 @enderror
                     </div>
                     <div class="form-group">
-                      <div class="custom-file">
-                        <label class="custom-file-label" for="customFile">Choose file</label>
-                        <input name="image" type="file" class="custom-file-input @error('image') is-invalid @enderror" id="customFile">
+                      <div class="">
+                        <!-- <label class="custom-file-label" for="customFile">Choose file</label> -->
+                        <input name="image" type="file" class=" @error('image') is-invalid @enderror" id="customFile">
                         
                           @error('image')
                             <span class="invalid-feedback" role="alert">
@@ -97,7 +97,7 @@
 
                     
                     <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn bg-primary btn-primary">Submit</button>
                     </div>
                     
                   </form>

@@ -8,6 +8,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- fontawesome link  -->
+    <link rel="stylesheet" type="text/css" href="{{ mix('css/fontawesome.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ mix('css/solid.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ mix('css/light.css') }}">
+
+<!-- etc. -->
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -36,6 +43,13 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                        </li>
+                        
+
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
