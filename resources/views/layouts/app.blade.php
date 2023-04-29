@@ -13,6 +13,10 @@
 <link rel="stylesheet" type="text/css" href="{{ mix('css/solid.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ mix('css/light.css') }}">
 
+<!-- notify  -->
+@notifyJs
+  @notifyCss
+      <x-notify::notify />
 <!-- etc. -->
 
 
@@ -44,8 +48,10 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-shopping-cart"></i>
+                        <a class="nav-link" href="{{route('cart.show')}}">
+                            <span class="fas fa-shopping-cart">
+                                {{ session()->has('cart')?session()->get('cart')->totalQty:0 }}
+                            </span>
                         </a>
                         </li>
                         

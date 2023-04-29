@@ -39,7 +39,7 @@
                
               </div>
               <hr>
-              <a href="" class="btn btn-lg btn-outline-primary text-uppercase">Add to Cart</a>
+              <a href="{{route('add.cart',[$product->id])}}" class="btn btn-lg btn-outline-primary text-uppercase">Add to Cart</a>
             </div>
           </section>
         </aside>
@@ -64,7 +64,7 @@
               <div class="btn-group">
                 <a href="{{route('product.show.frontend',[$product->id])}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
                 
-                <button type="button" class="btn btn-sm btn-outline-success">Add to cart</button>
+                <!-- <a href="{{url('add.cart',[$product->id])}}"></a><button type="button" class="btn btn-sm btn-outline-success">Add to cart</button> -->
               </div>
               <small class="text-muted">${{$product->price}}</small>
             </div>

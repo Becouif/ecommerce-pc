@@ -51,7 +51,7 @@
                 <div class="btn-group">
                   <a href="{{route('product.show.frontend',[$product->id])}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
                   
-                  <button type="button" class="btn btn-sm btn-outline-success">Add to cart</button>
+                  <a href="{{route('add.cart',[$product->id])}}"><button type="button" class="btn btn-sm btn-outline-success">Add to cart</button></a>
                 </div>
                 <small class="text-muted">${{ $product->price }}</small>
               </div>

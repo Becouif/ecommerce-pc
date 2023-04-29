@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +29,14 @@ Route::get('category/{name}',[FrontProductListController::class, 'all'])->name('
 
 // route for ajax dropdown for subcategories after clicking category 
 Route::get('subcategories/{id}',[ProductController::class, 'loadSubcategory'])->name('load.subcategory');
+
+
+Route::get('/add-to-cart/{product}',[CartController::class,'addToCart'])->name('add.cart');
+Route::get('/cart',[CartController::class, 'showCart'])->name('cart.show');
+
+Route::post('/product/{product}',[CartController::class, 'updateCart'])->name('cart.update');
+
+Route::post('/product/remove/{product}',[CartController::class, 'removeCart'])->name('cart.remove');
 
 Auth::routes();
 
