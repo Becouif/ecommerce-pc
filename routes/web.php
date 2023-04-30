@@ -24,6 +24,7 @@ use App\Http\Controllers\CartController;
 
 Route::get('/',[FrontProductListController::class, 'index']);
 
+// frontend list and show 
 Route::get('product/{id}',[FrontProductListController::class, 'show'])->name('product.show.frontend');
 Route::get('category/{name}',[FrontProductListController::class, 'all'])->name('product.list');
 
@@ -37,6 +38,11 @@ Route::get('/cart',[CartController::class, 'showCart'])->name('cart.show');
 Route::post('/product/{product}',[CartController::class, 'updateCart'])->name('cart.update');
 
 Route::post('/product/remove/{product}',[CartController::class, 'removeCart'])->name('cart.remove');
+
+// route for checkout 
+Route::get('/checkout/{amount}',[CartController::class, 'checkOut'])->name('cart.checkout');
+
+
 
 Auth::routes();
 

@@ -55,4 +55,10 @@ class CartController extends Controller
         notify()->success('cart updated');
         return redirect()->back();
     }
+
+
+
+    public function checkOut($amount){
+        return view('checkout',compact('amount'));
+    }
 }
