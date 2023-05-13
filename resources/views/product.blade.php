@@ -45,6 +45,8 @@
       @endforeach
     </div>
   </div>
+  <a href="{{route('more.product')}}"><button class="btn btn-success bg-success">More Product</button></a>
+  
 </div>
 <!-- ADD A FUNCTIONAL CAROUSEL  -->
 

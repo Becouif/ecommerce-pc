@@ -7,6 +7,11 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\SliderController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +27,7 @@ use App\Http\Controllers\CartController;
 //     return view('welcome');
 // });
 
-Route::get('/',[FrontProductListController::class, 'index']);
+Route::get('/',[FrontProductListController::class, 'index'])->name('homepage');
 
 // frontend list and show 
 Route::get('product/{id}',[FrontProductListController::class, 'show'])->name('product.show.frontend');
@@ -42,6 +47,15 @@ Route::post('/product/remove/{product}',[CartController::class, 'removeCart'])->
 // route for checkout 
 Route::get('/checkout/{amount}',[CartController::class, 'checkOut'])->name('cart.checkout');
 
+// route for paypal payment 
+Route::post('/pay',[PaypalController::class, 'postPayment'])->name('paypal');
+
+// route to view all product 
+
+Route::get('all/products',[FrontProductListController::class, 'moreProducts'])->name('more.product');
+
+
+
 
 
 Auth::routes();
@@ -56,13 +70,12 @@ Route::group(['prefix'=>'auth'], function(){
     Route::get('/dashboard',function(){
         return view('admin.dashboard');
     })->name('dashboard');
-    
     Route::resource('category',CategoryController::class);
-    
     Route::resource('subcategory',SubCategoryController::class);
-    
     Route::resource('product', ProductController::class);
-    
+    Route::get('slider/create',[SliderController::class, 'create'])->name('slider.create');
+    Route::get('slider',[SliderController::class, 'index'])->name('slider');
+    Route::post('slider',[SliderController::class, 'store'])->name('slider.store');
 })->middleware(Admin::class);
 
 
